@@ -136,19 +136,19 @@ module.exports = Franz => {
     return null;
   }
 
-  // webContents.on('new-window', function (event, url) {
-  //   let finalUrl = url;
+  webContents.on('new-window', function (event, url) {
+    let finalUrl = url;
 
-  //   let newUrl = parseExternalUrl(url);
-  //   if (newUrl != null) {
-  //     finalUrl = newUrl;
+    let newUrl = parseExternalUrl(url);
+    if (newUrl != null) {
+      finalUrl = newUrl;
 
-  //     console.log(`Google Calendar Redirecting 'new-window' event to ${finalUrl}`);
+      console.log(`Google Calendar Redirecting 'new-window' event to ${finalUrl}`);
 
-  //     event.preventDefault();
-  //     window.open(finalUrl);
-  //   }
-  // });
+      event.preventDefault();
+      window.open(finalUrl);
+    }
+  });
 
   document.addEventListener('click', (e) => {
     const { tagName, target, href } = e.target;
